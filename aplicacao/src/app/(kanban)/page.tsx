@@ -80,7 +80,6 @@ function Kanban() {
     async function handleDelete(id: string) {
         try {
             await fetchDelete(id);
-            // Atualiza o estado local para remover a tarefa deletada da UI
             setTarefas((old) => old.filter((t) => t.id !== id));
         } catch (error) {
             console.error("Erro ao deletar tarefa:", error);
