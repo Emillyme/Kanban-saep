@@ -15,20 +15,24 @@ datasource db {
 }
 
 model Usuario {
-  id    Int    @id @default(autoincrement())
-  nome  String
-  email String @unique
+  id      Int      @id @default(autoincrement())
+  nome    String
+  email   String   @unique
+  tarefas Tabela[] 
 }
 
 model Tabela {
-  id         Int        @id @default(autoincrement())
-  titulo     String
-  descricao  String
-  status     Status     @default(A_FAZER)
-  setor      String
-  prioridade Prioridade
-  criadoEm   DateTime   @default(now())
-  fechaEm    DateTime?
+  id            Int        @id @default(autoincrement())
+  titulo        String
+  descricao     String
+  status        Status     @default(A_FAZER)
+  setor         String
+  prioridade    Prioridade
+  criadoEm      DateTime   @default(now())
+  fechaEm       DateTime?
+
+  usuarioId     Int        
+  usuario       Usuario    @relation(fields: [usuarioId], references: [id])
 }
 
 enum Prioridade {
