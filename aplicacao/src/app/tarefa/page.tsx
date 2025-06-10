@@ -77,7 +77,7 @@ const Tarefa = () => {
 
       <form onSubmit={handleSubmit(onSubmit)} className="mt-10 flex gap-8 w-[720px] max-w-full">
         <div className="flex-1 flex flex-col gap-5">
-  
+
           <div>
             <label className="text-gray-800">Título</label>
             <input {...register("titulo")} className="w-full bg-transparent border border-gray-600 h-[36px] rounded text-gray-700 p-2" />
@@ -99,6 +99,7 @@ const Tarefa = () => {
           <div>
             <label className="text-gray-800">Usuário</label>
             <select {...register("usuarioId", { valueAsNumber: true })} className="w-full bg-transparent border border-gray-600 h-[36px] rounded text-gray-700 p-2">
+              <option value="none" selected disabled hidden>Selecione um usuario</option>
               {usuarios.map((usuario) => (
                 <option key={usuario.id} value={usuario.id}>
                   {usuario.nome}
